@@ -7,11 +7,13 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
