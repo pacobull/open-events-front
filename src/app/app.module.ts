@@ -1,33 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Modules
+import { SharedModule } from './shared/shared.module';
+import { EventsModule } from './events/events.module';
+import { LoginModule } from './login/login.module';
+import { ProfileModule } from './profile/profile.module';
+import { AppRoutingModule } from './app-routing.module';
+
+// Components
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { EventListComponent } from './event-list/event-list.component';
-import { EventDetailsComponent } from './event-details/event-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    ToolbarComponent,
-    EventListComponent,
-    EventDetailsComponent
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatListModule,
-    MatCardModule
+    AppRoutingModule,
+    SharedModule,
+    EventsModule,
+    LoginModule,
+    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
