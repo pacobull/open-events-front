@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { EventsModule } from './events/events.module';
 import { LoginModule } from './login/login.module';
 import { ProfileModule } from './profile/profile.module';
+import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     SharedModule,
     EventsModule,
     LoginModule,
