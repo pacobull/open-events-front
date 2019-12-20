@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
 import 'hammerjs';
 
 @NgModule({
@@ -15,14 +16,16 @@ import 'hammerjs';
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ],
   exports: [
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ],
   entryComponents: []
 })
