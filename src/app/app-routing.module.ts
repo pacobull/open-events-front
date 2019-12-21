@@ -15,10 +15,15 @@ import { AddEditEventComponent } from './events/add-edit-event/add-edit-event.co
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
   { path: 'events', component: EventListComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'eventDetails/:id', component: EventDetailsComponent },
-  { path: 'addEditEvent/:id', component: AddEditEventComponent, canActivate: [AuthGuard] },
+  {
+    path: 'addEditEvent/:id',
+    component: AddEditEventComponent,
+    canActivate: [AuthGuard]
+  },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
