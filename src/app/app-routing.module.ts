@@ -5,6 +5,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { EventListComponent } from './events/event-list/event-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileComponent } from './profile/profile/profile.component';
+import { SignupComponent } from './login/signup/signup.component';
 import { LoginComponent } from './login/login/login.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { AddEditEventComponent } from './events/add-edit-event/add-edit-event.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
   { path: 'events', component: EventListComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'eventDetails/:id', component: EventDetailsComponent },
   { path: 'addEditEvent/:id', component: AddEditEventComponent },
