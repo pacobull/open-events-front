@@ -1,45 +1,50 @@
 import { NgModule } from '@angular/core';
 
 // Angular material
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import 'hammerjs';
 import { RouterModule } from '@angular/router';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'; // <-- NEW
+
+import 'hammerjs';
 
 @NgModule({
   declarations: [],
   imports: [
-    BrowserAnimationsModule,
-    RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
+    BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    RouterModule,
+    MatSlideToggleModule
   ],
   exports: [
-    BrowserAnimationsModule,
-    RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
+    BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    RouterModule,
+    MatSlideToggleModule
   ],
   entryComponents: []
 })

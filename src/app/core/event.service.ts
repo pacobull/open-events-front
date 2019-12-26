@@ -75,6 +75,17 @@ export class EventService {
       );
   }
 
+  getFilteredEvents(filter): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.get(environment.apiURL + 'events?' + filter, { headers }).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
   // Error handling
 
   private handleError(error: HttpErrorResponse) {
