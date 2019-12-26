@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../models/event';
-
+import { select, Store } from '@ngrx/store';
 import { EventService } from '../../core/event.service';
+import * as layout from '../../store/layout/layout.actions';
+import { User } from '../../models/user';
+import { SubscriptionLike } from 'rxjs';
 
 @Component({
   selector: 'oevents-event-list',
@@ -11,12 +14,24 @@ import { EventService } from '../../core/event.service';
 export class EventListComponent implements OnInit {
   events: Event[];
   selectedEvent: Event;
+  slideMyEvents: boolean;
+  subscriptionLayout: SubscriptionLike;
   displayedColumns: string[] = ['Date', 'Location', 'Title'];
 
-  constructor(private eventService: EventService) {}
+  constructor(
+    private eventService: EventService,
+    private store: Store<any>
+  ) {}
 
   ngOnInit() {
     this.getEvents();
+
+    this.subscriptionLayout = this.store.pipe(select('layout')).subscribe(state => {
+      if (state && state.filteredEvents) {
+        this.events = state.filteredEvents;
+        this.selectedEvent = this.events[0];
+      }
+    });
   }
 
   onSelectEvent(event: Event) {
@@ -29,4 +44,17 @@ export class EventListComponent implements OnInit {
       this.selectedEvent = events[0];
     });
   }
+
+  myEventsChange() {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+
+    if (this.slideMyEvents && user) {
+      const userMail = user.email;
+      const filter = 'addedBy=' + userMail;
+      this.store.dispatch(new layout.GetFilteredEvents(filter));
+    } else {
+      this.getEvents();
+    }
+  }
+
 }
