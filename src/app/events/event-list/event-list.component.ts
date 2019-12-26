@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Event } from '../../models/event';
 import { select, Store } from '@ngrx/store';
 import { EventService } from '../../core/event.service';
@@ -11,11 +11,14 @@ import { SubscriptionLike } from 'rxjs';
   templateUrl: './event-list.component.html',
   styleUrls: ['./event-list.component.scss']
 })
-export class EventListComponent implements OnInit {
+export class EventListComponent implements OnInit, OnDestroy {
   events: Event[];
   selectedEvent: Event;
   slideMyEvents: boolean;
   subscriptionLayout: SubscriptionLike;
+  subscriptionLogin: SubscriptionLike;
+  isAuthenticated: boolean;
+
   displayedColumns: string[] = ['Date', 'Location', 'Title'];
 
   constructor(
@@ -30,6 +33,12 @@ export class EventListComponent implements OnInit {
       if (state && state.filteredEvents) {
         this.events = state.filteredEvents;
         this.selectedEvent = this.events[0];
+      }
+    });
+
+    this.subscriptionLogin = this.store.pipe(select('login')).subscribe(state => {
+      if (state) {
+        this.isAuthenticated = state.logged;
       }
     });
   }
@@ -57,4 +66,8 @@ export class EventListComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.subscriptionLayout.unsubscribe();
+    this.subscriptionLogin.unsubscribe();
+  }
 }
